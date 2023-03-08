@@ -18,8 +18,7 @@ jobs:
           arguments: bootJar
       - uses: actions/upload-artifact@v3
         with:
-          name: coffeeServer
+          name: auth
           path: |
-            build/libs
-            **/build/libs
-            !**/*-plain.jar
+            auth/build/libs/auth-*.jar
+            !auth/build/libs/auth-*-plain.jar
