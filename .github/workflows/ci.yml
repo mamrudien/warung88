@@ -1,12 +1,10 @@
-name: Run Gradle Build
+name: CI
 
 on: [push]
 
 jobs:
   build:
-
-    runs-on: ubuntu-latest
-
+    runs-on: ubuntu-22.04
     steps:
       - uses: actions/checkout@v3
       - name: Set up JDK 17
@@ -17,10 +15,11 @@ jobs:
       - name: Build with Gradle
         uses: gradle/gradle-build-action@v2
         with:
-          arguments: build
+          arguments: bootJar
       - uses: actions/upload-artifact@v3
         with:
           name: coffeeServer
           path: |
             build/libs
             **/build/libs
+            !**/*-plain.jar
