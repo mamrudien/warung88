@@ -34,6 +34,22 @@ tasks.withType<KotlinCompile> {
 	}
 }
 
+tasks.named<BootBuildImage>("bootBuildImage") {
+	val registry = System.getenv("REGISTRY") ?: "docker.io"
+	val user = System.getenv("USER") ?: "library"
+	val token = System.getenv("TOKEN") ?: ""
+
+	imageName.set("$registry/$user/${project.rootProject.name}-${project.name}:${project.version}")
+
+	docker {
+		publishRegistry {
+			url.set(registry)
+			username.set(user)
+			password.set(token)
+		}
+	}
+}
+
 tasks.withType<Test> {
 	useJUnitPlatform()
 }

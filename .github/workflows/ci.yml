@@ -2,9 +2,17 @@ name: CI
 
 on: [push]
 
+env:
+  REGISTRY: ghcr.io
+  USER: ${{ github.actor }}
+  TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
 jobs:
   build:
     runs-on: ubuntu-22.04
+    permissions:
+      contents: read
+      packages: write
     steps:
       - uses: actions/checkout@v3
       - name: Set up JDK 17
@@ -15,10 +23,4 @@ jobs:
       - name: Build with Gradle
         uses: gradle/gradle-build-action@v2
         with:
-          arguments: bootJar
-      - uses: actions/upload-artifact@v3
-        with:
-          name: auth
-          path: |
-            auth/build/libs/auth-*.jar
-            !auth/build/libs/auth-*-plain.jar
+          arguments: bootBuildImage --publishImage
