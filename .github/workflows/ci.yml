@@ -4,7 +4,7 @@ on: [push]
 
 env:
   REGISTRY: ghcr.io
-  USER: ${{ github.actor }}
+  USER: ${{ github.repository_owner }}
   TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
 jobs:
