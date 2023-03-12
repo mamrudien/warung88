@@ -2,10 +2,9 @@ plugins {
     id("com.gradle.enterprise") version("3.9")
 }
 
-rootProject.name = "coffeeShop"
+rootProject.name = "warung88"
 
 include("auth")
-
 
 gradleEnterprise {
     if (System.getenv("CI") != null) {
