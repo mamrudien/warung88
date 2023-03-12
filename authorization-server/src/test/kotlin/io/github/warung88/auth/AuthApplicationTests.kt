@@ -1,4 +1,4 @@
-package id.ac.ugm.coffeeshop.auth
+package io.github.warung88.auth
 
 import org.junit.jupiter.api.Test
 import org.springframework.boot.test.context.SpringBootTest

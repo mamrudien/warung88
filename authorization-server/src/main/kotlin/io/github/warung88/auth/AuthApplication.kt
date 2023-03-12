@@ -1,4 +1,4 @@
-package id.ac.ugm.coffeeshop.auth
+package io.github.warung88.auth
 
 import org.springframework.boot.autoconfigure.SpringBootApplication
 import org.springframework.boot.runApplication

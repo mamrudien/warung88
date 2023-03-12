@@ -1,4 +1,5 @@
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
+import org.springframework.boot.gradle.tasks.bundling.BootBuildImage
 
 plugins {
 	id("org.springframework.boot") version "3.0.4"
@@ -7,7 +8,7 @@ plugins {
 	kotlin("plugin.spring") version "1.7.22"
 }
 
-group = "id.ac.ugm.coffeeShop"
+group = "io.github.warung88"
 version = "0.0.1-SNAPSHOT"
 java.sourceCompatibility = JavaVersion.VERSION_17
 

@@ -1,4 +1,4 @@
-package id.ac.ugm.coffeeshop.auth
+package io.github.warung88.auth
 
 import com.nimbusds.jose.jwk.JWKSet
 import com.nimbusds.jose.jwk.RSAKey
