@@ -4,12 +4,12 @@ import org.springframework.boot.gradle.tasks.bundling.BootBuildImage
 plugins {
 	id("org.springframework.boot") version "3.0.4"
 	id("io.spring.dependency-management") version "1.1.0"
-	kotlin("jvm") version "1.7.22"
+	kotlin("jvm")
 	kotlin("plugin.spring") version "1.7.22"
 }
 
 group = "io.github.warung88"
-version = "0.1.0-dev"
+version = rootProject.version
 java.sourceCompatibility = JavaVersion.VERSION_17
 
 repositories {

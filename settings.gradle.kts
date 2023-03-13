@@ -5,6 +5,7 @@ plugins {
 rootProject.name = "warung88"
 
 include("authorization-server")
+include("driver-server")
 
 gradleEnterprise {
     if (System.getenv("CI") != null) {
