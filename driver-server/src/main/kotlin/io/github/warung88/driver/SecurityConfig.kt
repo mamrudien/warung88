@@ -1,39 +1,24 @@
 package io.github.warung88.driver
 
-import org.springframework.beans.factory.annotation.Value
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
-import org.springframework.http.HttpMethod
-import org.springframework.security.config.annotation.web.builders.HttpSecurity
-import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity
-import org.springframework.security.config.annotation.web.invoke
-import org.springframework.security.oauth2.jwt.JwtDecoder
-import org.springframework.security.oauth2.jwt.NimbusJwtDecoder
-import org.springframework.security.web.SecurityFilterChain
+import org.springframework.security.config.annotation.web.reactive.EnableWebFluxSecurity
+import org.springframework.security.config.web.server.ServerHttpSecurity
+import org.springframework.security.config.web.server.invoke
+import org.springframework.security.web.server.SecurityWebFilterChain
 
 
 @Configuration
-@EnableWebSecurity
+@EnableWebFluxSecurity
 class SecurityConfig {
-    @Value("\${spring.security.oauth2.resourceserver.jwt.jwk-set-uri}")
-    var jwkSetUri: String? = null
 
     @Bean
-    @Throws(Exception::class)
-    fun filterChain(http: HttpSecurity): SecurityFilterChain {
-
-        http {
-            authorizeHttpRequests {
-                authorize(anyRequest, authenticated)
-            }
-            oauth2ResourceServer {
-                jwt { }
-            }
+    fun filterChain(http: ServerHttpSecurity): SecurityWebFilterChain = http {
+        authorizeExchange {
+            authorize(anyExchange, authenticated)
         }
-
-        return http.build()
+        oauth2ResourceServer {
+            jwt { }
+        }
     }
-
-    @Bean
-    fun jwtDecoder(): JwtDecoder = NimbusJwtDecoder.withJwkSetUri(jwkSetUri).build()
 }
